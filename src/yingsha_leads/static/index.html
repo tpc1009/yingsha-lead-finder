@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f5f3ec">
+  <title>颖纱 · 客户线索</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#search" aria-label="颖纱客户线索首页">
+        <span class="brand-mark" aria-hidden="true">纱</span>
+        <span><strong>颖纱</strong><small>客户线索工作台</small></span>
+      </a>
+      <div class="workspace-label">我的工作空间 <span>LOCAL</span></div>
+      <nav class="navigation">
+        <button class="nav-item active" data-view="search" aria-current="page"><span class="nav-icon" aria-hidden="true">⌕</span><span>搜索找客户</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
+        <button class="nav-item" data-view="jobs"><span class="nav-icon" aria-hidden="true">▤</span><span>采集任务</span><span class="nav-count" id="nav-job-count">0</span></button>
+        <button class="nav-item" data-view="leads"><span class="nav-icon" aria-hidden="true">▦</span><span>客户线索</span><span class="nav-count" id="nav-lead-count">0</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="runtime-card"><span class="status-dot" id="runtime-dot" aria-hidden="true"></span><div><strong id="runtime-title">正在连接本地服务</strong><p>日常采集无需调用模型</p></div></div>
+        <div class="sidebar-foot"><span>YINGSHA TEXTILE</span><span id="version-label">本地工作台</span></div>
+      </div>
+    </aside>
+    <main class="main" id="main" tabindex="-1">
+      <header class="topbar">
+        <div class="breadcrumb">工作空间 <span aria-hidden="true">/</span> <strong id="breadcrumb-view">搜索找客户</strong></div>
+        <button class="button browser-button" id="open-browser"><span class="status-dot" id="browser-dot" aria-hidden="true"></span><span id="browser-button-label">连接浏览器</span><span aria-hidden="true">↗</span></button>
+      </header>
+      <div id="global-alert" class="alert" role="alert" hidden><span id="global-alert-text"></span><button class="icon-button" id="dismiss-alert" aria-label="关闭提示">×</button></div>
+      <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+      <section id="view-search" class="view" aria-labelledby="search-heading">
+        <div class="page-heading"><div><div class="eyebrow">DISCOVER YOUR NEXT CONNECTION</div><h1 id="search-heading">找到下一位合适的客户<span class="heading-dot">.</span></h1><p>从一组关键词出发，把公开信息整理成可跟进的客户线索。</p></div><span class="page-index" aria-hidden="true">01 / 03</span></div>
+        <div class="overview-grid">
+          <article class="stat-card"><span class="stat-label">已保存线索</span><strong id="stat-leads">—</strong><span class="stat-note">保留来源，方便复核</span></article>
+          <article class="stat-card"><span class="stat-label">正在采集</span><strong id="stat-running">—</strong><span class="stat-note"><span id="stat-pending">—</span> 个待处理网址</span></article>
+          <article class="stat-card model-stat"><span class="stat-label">运行时模型调用</span><strong id="stat-model">—<span>次</span></strong><span class="stat-note">代码提取 · 本地整理</span></article>
+        </div>
+        <div class="search-grid">
+          <article class="panel search-panel">
+            <div class="panel-heading"><div><div class="section-kicker">第一步 · 确定方向</div><h2>你想找到哪类客户？</h2></div><span class="small-mark" aria-hidden="true">⌕</span></div>
+            <form id="search-form">
+              <label for="product">产品关键词 <span>用英文搜索更容易发现海外客户</span></label>
+              <input id="product" name="product" value="abaya fabric" maxlength="160" required autocomplete="off" placeholder="例如：abaya fabric / nida fabric">
+              <div class="form-grid">
+                <div><label for="buyer-type">客户类型</label><input id="buyer-type" name="buyer_type" value="服装品牌" maxlength="100" placeholder="例如：服装品牌、面料批发商" required></div>
+                <div><label for="country">目标市场</label><input id="country" name="country" value="UAE" maxlength="100" placeholder="例如：UAE / Saudi Arabia" required></div>
+              </div>
+              <button class="button primary full-width" id="search-submit" type="submit">生成搜索入口 <span aria-hidden="true">↗</span></button>
+              <p class="field-help">产品填 abaya / nida fabric；国家或地区填在“目标市场”。生成入口后，选择一个渠道继续。</p>
+              <p id="search-changed" class="inline-note" role="status" hidden>搜索条件已修改，请点击“生成搜索入口”更新网址。已有采集记录仍保留。</p>
+            </form>
+          </article>
+          <aside class="guide-card">
+            <span class="guide-tag">一个简单的工作流</span><h2>搜索、采集，<br>然后开始跟进。</h2>
+            <ol class="workflow"><li><span>01</span><div><strong>打开搜索入口</strong><p>用产品、客户类型和市场缩小范围。</p></div></li><li><span>02</span><div><strong>选择已授权的页面</strong><p>在 Chrome 中登录，使用 OpenClaw 扩展连接目标标签页。</p></div></li><li><span>03</span><div><strong>保存有依据的线索</strong><p>提取公开商务信息，保留来源与匹配理由。</p></div></li></ol>
+            <div class="guide-foot"><span aria-hidden="true">↳</span> 无需配置模型或付费搜索 API</div>
+          </aside>
+        </div>
+        <section id="search-results-section" class="panel" aria-labelledby="search-results-heading" hidden>
+          <div class="panel-heading"><div><div class="section-kicker">搜索入口</div><h2 id="search-results-heading">选择渠道，打开搜索结果</h2></div><span class="muted small">新标签页打开</span></div>
+          <div id="search-results" class="query-grid"></div>
+          <p class="search-entry-note">点击入口会带上搜索词打开对应网站。需要采集搜索结果时，再使用下面的采集操作。</p>
+        </section>
+        <section class="panel facebook-panel" aria-labelledby="facebook-heading">
+          <div class="panel-heading"><div><div class="section-kicker">第二步 · FACEBOOK 企业筛选</div><h2 id="facebook-heading">每次筛选 10 个候选企业</h2></div><span class="chip neutral">规则筛选 · 模型调用 0 次</span></div>
+          <p class="muted">上方 Facebook 入口直接打开“主页 / Pages”搜索。打开结果并连接扩展后，回到这里选择结果页、导入候选，再开始每批 10 个的筛选。</p>
+          <p class="field-help">仅使用当前已加载的搜索结果。工具会依次打开候选主页并替换所选标签页内容；遇到登录或验证码会暂停，请在浏览器中处理。</p>
+          <div class="facebook-import-step">
+            <div class="facebook-step-heading"><span class="facebook-step-number">1</span><div><h3>导入搜索结果</h3><p>选择已打开的结果页，把候选企业加入搜索会话。</p></div></div>
+            <div class="facebook-toolbar"><div class="selected-page"><span class="status-dot" id="facebook-browser-dot" aria-hidden="true"></span><span id="facebook-target-label">尚未选择浏览器标签页</span></div><button class="button primary" id="facebook-import" disabled>导入当前搜索结果</button></div>
+          </div>
+          <div id="facebook-feedback" class="alert" role="status" aria-live="polite" hidden></div>
+          <div class="facebook-collect-step">
+            <div class="facebook-step-heading"><span class="facebook-step-number">2</span><div><h3>选择会话，开始采集</h3><p>继续已有会话时，直接从这里开始，每批最多处理 10 个候选。</p></div></div>
+            <div class="facebook-session-picker"><label for="facebook-session">已保存的搜索会话</label><select id="facebook-session" disabled><option value="">正在加载搜索会话…</option></select><button class="button compact" id="facebook-refresh">刷新会话 ↻</button></div>
+            <div class="facebook-batch-actions"><p class="field-help" id="facebook-batch-hint">请先完成第 1 步，导入搜索结果。</p><div class="button-group"><button class="button" id="facebook-retry" hidden disabled>重试失败项（最多10个）</button><button class="button primary" id="facebook-next" disabled>开始采集（最多 10 个）</button></div></div>
+            <div id="facebook-session-summary" class="facebook-session-summary" aria-live="polite"><p class="muted small">正在读取已保存的候选与进度…</p></div>
+          </div>
+        </section>
+        <section class="panel capture-panel" aria-labelledby="capture-heading"><div class="panel-heading"><div><div class="section-kicker">其他采集方式</div><h2 id="capture-heading">把当前页面变成线索</h2></div><span class="chip neutral">仅操作所选标签页</span></div>
+          <p class="muted">企业官网搜索结果可提取候选网址。企业官网、Facebook 或 Instagram 企业主页，也可由你打开并确认后点击“保存当前企业”进行单页采集；Instagram 仅支持这种方式。</p>
+          <div class="capture-toolbar"><div class="selected-page"><span class="status-dot" aria-hidden="true"></span><span id="selected-tab-label">尚未选择浏览器标签页</span></div><div class="button-group"><button class="button" id="capture-candidates">从当前页提取候选</button><button class="button dark" id="capture-lead">保存当前企业 <span aria-hidden="true">＋</span></button></div></div>
+          <div id="candidate-section" class="candidate-section" hidden><div class="candidate-heading"><label class="checkbox-label"><input id="candidate-select-all" type="checkbox">全选候选网址</label><span id="candidate-count" class="muted small"></span></div><div id="candidate-list" class="candidate-list"></div><div class="candidate-actions"><span class="muted small" id="candidate-selection-label">已选择 0 个</span><button class="button primary" id="prepare-candidates" disabled>将选中网址带入采集任务 <span aria-hidden="true">→</span></button></div></div>
+        </section>
+      </section>
+      <section id="view-jobs" class="view" aria-labelledby="jobs-heading" hidden>
+        <div class="page-heading"><div><div class="eyebrow">COLLECT WITH CONTEXT</div><h1 id="jobs-heading">让采集有条不紊<span class="heading-dot">.</span></h1><p>管理官网采集与 Facebook 批次；Facebook 每批 10 个的入口位于“搜索找客户”。</p></div><span class="page-index" aria-hidden="true">02 / 03</span></div>
+        <section class="panel" aria-labelledby="new-job-heading"><div class="panel-heading"><div><div class="section-kicker">新建任务</div><h2 id="new-job-heading">添加待采集的网址</h2></div><span class="chip neutral">最多 100 个</span></div>
+          <form id="job-form"><label for="job-urls">企业官网网址 <span>每行一个，支持 HTTP / HTTPS</span></label><textarea id="job-urls" rows="5" placeholder="https://example.com&#10;https://another-company.com" required spellcheck="false" aria-describedby="batch-scope-note"></textarea>
+            <p class="field-help" id="batch-scope-note">此处粘贴网址的两种批量方式仅用于企业官网。Facebook 请使用“搜索找客户”中的每批 10 个入口；Instagram 请打开并确认企业主页后，点击“保存当前企业”。</p>
+            <div class="form-grid"><div><label for="job-product">产品关键词</label><input id="job-product" value="abaya fabric" maxlength="160" required></div><div><label for="job-country">搜索目标市场</label><input id="job-country" value="UAE" maxlength="100" required></div></div>
+            <fieldset class="mode-fieldset"><legend>采集方式</legend><div class="mode-grid"><label class="mode-option"><input type="radio" name="job-mode" value="http" checked><span><strong>官网自动采集</strong><small>公开官网，后台顺序处理</small></span></label><label class="mode-option"><input type="radio" name="job-mode" value="browser"><span><strong>已登录浏览器采集</strong><small>需要登录的企业官网，使用所选标签页</small></span></label></div></fieldset>
+            <div id="browser-mode-note" class="inline-note" hidden><strong>会依次打开网址，替换所选标签页内容。</strong><span id="job-browser-target">尚未选择标签页，请先点击右上角“连接浏览器”。</span><span>登录或验证码由你手动处理；遇到限制时任务会暂停。</span></div>
+            <div class="form-footer"><p class="field-help">仅记录页面实际呈现的公开商务信息；缺失联系方式不会猜测。</p><button class="button primary" id="start-job" type="submit">开始采集 <span aria-hidden="true">→</span></button></div>
+          </form>
+        </section>
+        <div class="section-heading"><h2>采集记录 <span id="job-total" class="count-label"></span></h2><button class="button text-button" id="refresh-jobs">刷新任务 <span aria-hidden="true">↻</span></button></div><div id="jobs-list" class="jobs-list" aria-live="polite"><div class="empty-state"><span class="empty-symbol" aria-hidden="true">▤</span><h3>正在加载采集任务</h3><p>请稍候。</p></div></div>
+      </section>
+      <section id="view-leads" class="view" aria-labelledby="leads-heading" hidden>
+        <div class="page-heading"><div><div class="eyebrow">EVERY CONNECTION STARTS HERE</div><h1 id="leads-heading">值得继续了解的客户<span class="heading-dot">.</span></h1><p>查看公开联系方式、核对来源，再决定下一步跟进。</p></div><span class="page-index" aria-hidden="true">03 / 03</span></div>
+        <section class="panel leads-panel"><div class="leads-toolbar"><form id="lead-filter-form" class="lead-filters"><div class="filter-search"><label class="sr-only" for="lead-search">搜索线索</label><span aria-hidden="true">⌕</span><input id="lead-search" placeholder="搜索公司、网址、联系方式…" autocomplete="off"></div><label class="sr-only" for="lead-status-filter">跟进状态</label><select id="lead-status-filter"><option value="">全部状态</option><option value="new">待跟进</option><option value="contacted">已联系</option><option value="replied">已回复</option><option value="qualified">有效线索</option><option value="archived">已归档</option></select><button class="button" id="filter-leads" type="submit">筛选</button></form><div class="export-actions"><span class="muted small">导出</span><button class="button compact" id="export-csv">CSV ↓</button><button class="button compact" id="export-xlsx">Excel ↓</button></div></div>
+          <div class="results-caption"><span id="lead-total">正在加载线索</span><span>规则匹配仅供筛选，不代表采购意向</span></div>
+          <div id="leads-content"><div class="empty-state"><span class="empty-symbol" aria-hidden="true">▦</span><h3>正在加载客户线索</h3><p>请稍候。</p></div></div>
+          <div class="pagination" id="lead-pagination" hidden><span id="page-label"></span><div class="button-group"><button class="button compact" id="previous-page">上一页</button><button class="button compact" id="next-page">下一页</button></div></div>
+        </section>
+      </section>
+      <footer class="main-footer"><span>让每条线索，都有据可循。</span><span id="engine-label">本地存储 · 代码采集</span></footer>
+    </main>
+  </div>
+  <dialog id="browser-dialog" class="browser-dialog" aria-labelledby="browser-dialog-title"><div class="dialog-heading"><div><div class="section-kicker">OPENCLAW · CHROME</div><h2 id="browser-dialog-title">选择已授权的标签页</h2></div><button class="icon-button" id="close-browser" aria-label="关闭浏览器连接窗口">×</button></div><p class="muted">在 Chrome 打开目标页面，并通过 OpenClaw 扩展连接该标签页。登录和验证码请在浏览器中完成。</p><div id="browser-message" class="inline-note" role="status">点击刷新，读取已授权的标签页列表。</div><label for="browser-target">要操作的标签页</label><select id="browser-target"><option value="">请选择一个标签页</option></select><p class="field-help">工具只使用你选择的标签页。不会自动扫描其他页面。</p><div class="dialog-actions"><button class="button" id="refresh-browser">刷新连接</button><button class="button primary" id="confirm-browser" disabled>使用此标签页</button></div></dialog>
+  <dialog id="lead-dialog" class="lead-dialog" aria-labelledby="lead-detail-title"><div class="dialog-heading"><div><div class="section-kicker">客户线索详情</div><h2 id="lead-detail-title">正在加载</h2></div><button class="icon-button" id="close-lead" aria-label="关闭客户详情">×</button></div><div id="lead-detail-content"></div></dialog>
+  <noscript><p class="noscript">请启用 JavaScript，以使用本地线索工作台。</p></noscript>
+</body>
+</html>
